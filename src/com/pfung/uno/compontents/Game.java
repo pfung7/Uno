@@ -9,13 +9,31 @@ public class Game {
     private Player[] Players;
     private int PlayerInAction;
     private Deck deckDraw;
-    private Deck deckDiscad;
+    private Deck deckDiscard;
     private int topCard;
-    private int lastWin;
     private direction GameDir;
 
-    private enum direction{Clockwise, CounterClockwise};
+    private enum direction { Clockwise, CounterClockwise }
 
+    public int getPlayerInAction() {
+        return PlayerInAction;
+    }
+
+    public void setPlayerInAction(int playerInAction) {
+        PlayerInAction = playerInAction;
+    }
+
+    public int getNumPlayer() {
+        return NumPlayer;
+    }
+
+    public void setNumPlayer(int numPlayer) {
+        NumPlayer = numPlayer;
+    }
+
+    public void setDeckDraw(Deck deckDraw) {
+        this.deckDraw = deckDraw;
+    }
 
     public Game(int lastWin) {
         GameID = 1;
@@ -23,14 +41,20 @@ public class Game {
         GameDir = direction.Clockwise;
         Players = new Player[NumPlayer];
 
-        deckDiscad = new Deck();
+        deckDiscard = new Deck();
         deckDraw = new Deck();
-        this.topCard = topCard;
-        this.lastWin = lastWin;
+        topCard = 100;
+        PlayerInAction = lastWin;
     }
 
     public void NextTurn(){
 
+    }
+
+    public void ChangeDirection(){
+        if (GameDir == direction.Clockwise)
+                GameDir = direction.CounterClockwise;
+        else GameDir = direction.Clockwise;
     }
 
 }

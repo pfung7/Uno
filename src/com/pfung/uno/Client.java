@@ -15,7 +15,7 @@ public class Client {
         System.out.println("Welcome to Uno!");
         for(int i=1;i<=108;i++) {
             myCard = new Card(i);
-            System.out.println("CardID: " + myCard.getCardID() + " " + myCard.getColor() + " " + myCard.getValue());
+            System.out.println("CardID: " + i + " " + myCard.getColor() + " " + myCard.getValue() + " Score: " + myCard.getScore());
         }
 
     }

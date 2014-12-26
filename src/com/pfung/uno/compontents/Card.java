@@ -7,6 +7,7 @@ public class Card {
     private int CardID;
     private CardColor Color;
     private CardValue Value;
+    private int Score;
 
     private enum CardColor{
         Red, Yellow, Blue, Green, Black;
@@ -17,6 +18,7 @@ public class Card {
             return s.substring(0,1)+s.substring(1).toLowerCase();
         }
     };
+
     private enum CardValue{
         Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Skip, Reverse, Draw2, Draw4, Wild;
 
@@ -62,9 +64,14 @@ public class Card {
         return Value.toString();
     }
 
+    public int getScore() {
+        return Score;
+    }
+
     public Card(int cardID) {
         CardID = cardID;
 
+        // Special card are black and there are 100 color cards
         if (CardID > 100)
             Color = CardColor.Black;
         else
@@ -83,48 +90,67 @@ public class Card {
                     break;
             }
 
-        if (CardID <= 4)
+        // 4 Zero cards
+        if (CardID <= 4) {
             Value = CardValue.Zero;
+            Score = 0;
+        }
         else
             switch ((CardID + 3) / 8) {
                 case 1:
                     Value = CardValue.One;
+                    Score = 1;
                     break;
                 case 2:
                     Value = CardValue.Two;
+                    Score = 2;
                     break;
                 case 3:
                     Value = CardValue.Three;
+                    Score = 3;
                     break;
                 case 4:
                     Value = CardValue.Four;
+                    Score = 4;
                     break;
                 case 5:
                     Value = CardValue.Five;
+                    Score = 5;
                     break;
                 case 6:
                     Value = CardValue.Six;
+                    Score = 6;
                     break;
                 case 7:
                     Value = CardValue.Seven;
+                    Score =7;
                     break;
                 case 8:
                     Value = CardValue.Eight;
+                    Score = 8;
                     break;
                 case 9:
                     Value = CardValue.Nine;
+                    Score = 9;
                     break;
                 case 10:
                     Value = CardValue.Skip;
+                    Score = 20;
                     break;
                 case 11:
                     Value = CardValue.Reverse;
+                    Score = 20;
                     break;
                 case 12:
                     Value = CardValue.Draw2;
+                    Score = 20;
                     break;
                 case 13:
-                    Value = (CardID % 2 == 0) ? CardValue.Wild: CardValue.Draw4; break;
+                    Value = (CardID % 2 == 0) ? CardValue.Wild: CardValue.Draw4;
+                    Score =50;
+                    break;
             }
+
+
     }
 }
