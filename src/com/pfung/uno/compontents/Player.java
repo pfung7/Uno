@@ -5,7 +5,7 @@ import sun.rmi.log.LogInputStream;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-
+import java.util.Random;
 /**
  * Created by Patrick on 12/12/2014.
  */
@@ -15,6 +15,7 @@ public class Player {
     private int playerID;
     private int score;
     private int totalScore;
+    private boolean isHuman;
 
     public int getTotalScore() {
         return totalScore;
@@ -40,7 +41,7 @@ public class Player {
         this.nickname = nickname;
     }
 
-     public int getPlayerID() {
+    public int getPlayerID() {
         return playerID;
     }
 
@@ -58,15 +59,12 @@ public class Player {
 
     private List<Card> hand;
 
-    public Player(String[] args){
+    public Player(boolean isHumanFlag){
+
+        isHuman = isHumanFlag;
         System.out.print("What is your nickname?");
-        try {
-            System.in.read();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        setNickname(nickname);
-        setPlayerID(1);
+        setNickname(System.console().readLine());
+        setPlayerID(1 + (int) Math.random() * 100 );
         setScore(0);
         hand = new LinkedList<Card>();
 

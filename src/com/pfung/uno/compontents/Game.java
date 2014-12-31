@@ -6,7 +6,7 @@ package com.pfung.uno.compontents;
 public class Game {
     private int GameID;
     private int NumPlayer;
-    private Player[] Players;
+    public Player[] GamePlayer;
     private int PlayerInAction;
     private Deck deckDraw;
     private Deck deckDiscard;
@@ -39,12 +39,16 @@ public class Game {
         GameID = 1;
         NumPlayer = 4;
         GameDir = direction.Clockwise;
-        Players = new Player[NumPlayer];
+        GamePlayer = new Player[NumPlayer];
 
         deckDiscard = new Deck();
         deckDraw = new Deck();
-        topCard = 100;
+
+        GamePlayer[1] = new Player(true);
+
         PlayerInAction = lastWin;
+
+
     }
 
     public void NextTurn(){

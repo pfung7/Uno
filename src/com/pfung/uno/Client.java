@@ -18,6 +18,9 @@ public class Client {
             System.out.println("CardID: " + i + " " + myCard.getColor() + " " + myCard.getValue() + " Score: " + myCard.getScore());
         }
 
+        myPlayer = new Player(true);
+        System.out.println("Player info: " + myPlayer.getPlayerID() +"(" + myPlayer.getNickname() +")" );
+
     }
 
 }
