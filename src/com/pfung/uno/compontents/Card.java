@@ -6,10 +6,10 @@ package com.pfung.uno.compontents;
 public class Card {
     private int CardID;
     private CardColor Color;
-    private CardValue Value;
+    private CardName NameOfCard;
     private int Score;
 
-    private enum CardColor{
+    public enum CardColor{
         Red, Yellow, Blue, Green, Black;
 
         @Override
@@ -19,7 +19,7 @@ public class Card {
         }
     };
 
-    private enum CardValue{
+    public enum CardName {
         Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Skip, Reverse, Draw2, Draw4, Wild;
 
         @Override
@@ -52,16 +52,18 @@ public class Card {
 
     }
 
-    public String getColor() {
+    public CardColor getColor() {return Color;}
+    public String getColorString() {
         return Color.toString();
     }
+    public void SetColor(CardColor myColor){ Color = myColor; }
 
     public int getCardID() {
         return CardID;
     }
 
-    public String getValue() {
-        return Value.toString();
+    public String getNameOfCard() {
+        return NameOfCard.toString();
     }
 
     public int getScore() {
@@ -81,7 +83,7 @@ public class Card {
                     break;
                 case 2:
                     Color = CardColor.Yellow;
-                    break;
+                break;
                 case 3:
                     Color = CardColor.Blue;
                     break;
@@ -92,65 +94,69 @@ public class Card {
 
         // 4 Zero cards
         if (CardID <= 4) {
-            Value = CardValue.Zero;
+            NameOfCard = CardName.Zero;
             Score = 0;
         }
         else
             switch ((CardID + 3) / 8) {
                 case 1:
-                    Value = CardValue.One;
+                    NameOfCard = CardName.One;
                     Score = 1;
                     break;
                 case 2:
-                    Value = CardValue.Two;
+                    NameOfCard = CardName.Two;
                     Score = 2;
                     break;
                 case 3:
-                    Value = CardValue.Three;
+                    NameOfCard = CardName.Three;
                     Score = 3;
                     break;
                 case 4:
-                    Value = CardValue.Four;
+                    NameOfCard = CardName.Four;
                     Score = 4;
                     break;
                 case 5:
-                    Value = CardValue.Five;
+                    NameOfCard = CardName.Five;
                     Score = 5;
                     break;
                 case 6:
-                    Value = CardValue.Six;
+                    NameOfCard = CardName.Six;
                     Score = 6;
                     break;
                 case 7:
-                    Value = CardValue.Seven;
+                    NameOfCard = CardName.Seven;
                     Score =7;
                     break;
                 case 8:
-                    Value = CardValue.Eight;
+                    NameOfCard = CardName.Eight;
                     Score = 8;
                     break;
                 case 9:
-                    Value = CardValue.Nine;
+                    NameOfCard = CardName.Nine;
                     Score = 9;
                     break;
                 case 10:
-                    Value = CardValue.Skip;
+                    NameOfCard = CardName.Skip;
                     Score = 20;
                     break;
                 case 11:
-                    Value = CardValue.Reverse;
+                    NameOfCard = CardName.Reverse;
                     Score = 20;
                     break;
                 case 12:
-                    Value = CardValue.Draw2;
+                    NameOfCard = CardName.Draw2;
                     Score = 20;
                     break;
                 case 13:
-                    Value = (CardID % 2 == 0) ? CardValue.Wild: CardValue.Draw4;
+                    NameOfCard = (CardID % 2 == 0) ? CardName.Wild: CardName.Draw4;
                     Score =50;
                     break;
             }
 
 
+    }
+
+    public void ShowCard(){
+        System.out.print(" "+ Color + " " + NameOfCard + "  ");
     }
 }
